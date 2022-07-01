@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js learn</title>
+    </head>
+
+    <body>
+        <div id="app">
+            {{ message }} <br>
+            <!-- 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。请只对可信内容使用 HTML 插值，绝不要对用户提供的内容使用插值。 -->
+            <!-- 这个 span 的内容将会被替换成为 property 值 rawHtml，直接作为 HTML——会忽略解析 property 值中的数据绑定。注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。 -->
+            <!-- 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。 -->
+            <span v-html="html"></span>
+            <div v-bind:id="dynamicId"></div>
+            <button v-bind:disabled="isButtonDisabled" @click="alertMsg">Button</button>
+            <h2>表达式</h2>
+            1. {{ num + 1 }} <br>
+            2. {{ ok ? "Yes" : "No" }} <br>
+            3. {{ message.split('').reverse().join('') }} <br>
+            4. <div v-bind:id="'list-' + id"></div> <br>
+            <!-- 用方括号括起来的JavaScript表达式作为一个指令的参数 -->
+            5. <a v-bind:[ok?"href":""]="url">baidu</a> <br>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript">
+        var app3 = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world!',
+                html: '<h1>一级标题</h1>',
+                dynamicId: 1,
+                isButtonDisabled: false,
+                num: 1,
+                ok: false,
+                id: 1,
+                url: 'www.baidu.com',
+                attributeName: 'href'
+            },
+            // 自定义函数方法
+            methods: {
+                alertMsg() {
+                    alert('hello world!');
+                }
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js learn</title>
+    </head>
+
+    <body>
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input v-model="message">
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript">
+        let tmpData = { message: 'Hello Vue!' }
+        // 使用 Object.freeze()，这会阻止修改现有的 property，也意味着响应系统无法再追踪变化。
+        Object.freeze(data);
+        var app6 = new Vue({
+            el: '#app-6',
+            data: tmpData
+        })
+    </script>
+</html>

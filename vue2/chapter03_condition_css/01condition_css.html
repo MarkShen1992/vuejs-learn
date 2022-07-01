@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js learn</title>
+        <style type="text/css">
+            /* css selectors: https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Selectors */
+            /* css selectors priority: https://dev.to/dcsl-guidesmiths/css-selectors-priority-1cjh */
+            .active {
+                font-size: 66;
+                color:aqua;
+            }
+            .static {
+                color: brown;
+            }
+            .active {
+                color:chartreuse;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+            <div :class="{ active: isActive }">测试</div>
+            <div class="static" :class="{ active: isActive, 'text-danger': hasError }">Puma</div>
+            <div class="static" :class="classObject">Puma</div>
+            <div class="static" :class="computedClassObject">Puma</div>
+            <div :class="[activeClass, errorClass]">Puma</div>
+            <div :class="[isActive ? activeClass : '', errorClass]">Puma</div>
+            <div :class="[{ active: isActive }, errorClass]">Puma</div>
+            <div :style="{ color: activeColor, fontSize: fontSize + 'px' }">asd</div>
+            <div :style="styleObject">asd</div>
+            <div :style="[styleObject]">asd</div>
+            <!-- https://developer.mozilla.org/zh-CN/docs/Glossary/Vendor_Prefix -->
+            <!-- 从 2.3.0 起你可以为 style 绑定中的 property 提供一个包含多个值的数组，常用于提供多个带前缀的值 -->
+            <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">safsfda</div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript">
+        var watchExampleVM = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                hasError: false,
+                classObject: { 
+                    active: true, 
+                    'text-danger': false 
+                },
+                activeClass: 'active',
+                errorClass: 'error',
+                activeColor: 'red',
+                fontSize: 60,
+                styleObject: {
+                    color: 'red',
+                    fontSize: '13px'
+                },
+                test: {
+                    color: 'blue'
+                }
+            },
+            computed: {
+                computedClassObject: function() {
+                    return {
+                        active: this.isActive && !this.error,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                }
+            }
+        })
+</script>
+</html>

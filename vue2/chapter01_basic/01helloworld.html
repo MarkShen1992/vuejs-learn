@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js learn</title>
+    </head>
+
+    <body>
+        <div id="app" v-once>
+            <!-- 数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值, v-once 指令和 Object.freeze() 注意下 -->
+            {{ message }}
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+    </script>
+</html>

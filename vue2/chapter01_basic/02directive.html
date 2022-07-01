@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js learn</title>
+    </head>
+
+    <body>
+        <div id="app-2">
+            <!-- 将这个元素节点的 title attribute 和 Vue 实例的 message property 保持一致 -->
+            <span v-bind:title="message">
+              鼠标悬停几秒钟查看此处动态绑定的提示信息！
+            </span>
+            <span :title="message">缩写</span>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script type="text/javascript">
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: '页面加载于 ' + new Date().toLocaleString()
+            }
+        })
+    </script>
+</html>
