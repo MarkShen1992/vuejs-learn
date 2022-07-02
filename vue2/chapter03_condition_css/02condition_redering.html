@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>vue.js learn</title>
-    </head>
+  <head>
+    <title>vue.js learn</title>
+  </head>
 
-    <body>
-        <div id="app">
-            <h1 v-if="awesome">Vue is awesome!</h1>
-            <h1 v-else>Oh no 😢</h1>
+  <body>
+    <div id="app">
+      <h1 v-if="awesome">Vue is awesome!</h1>
+      <h1 v-else>Oh no 😢</h1>
 
-            <template v-if="ok">
-                <h1>Title</h1>
-                <p>Paragraph 1</p>
-                <p>Paragraph 2</p>
-            </template>
+      <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
 
-            <div v-if="Math.random() > 0.5">
-                Now you see me
-            </div>
-            <div v-else>
-                Now you don't
-            </div>
+      <div v-if="Math.random() > 0.5">Now you see me</div>
+      <div v-else>Now you don't</div>
 
-            <div v-if="type === 'A'">
-                A
-            </div>
-            <div v-else-if="type === 'B'">
-                B
-            </div>
-            <div v-else-if="type === 'C'">
-                C
-            </div>
-            <div v-else>
-                Not A/B/C
-            </div>
+      <div v-if="type === 'A'">A</div>
+      <div v-else-if="type === 'B'">B</div>
+      <div v-else-if="type === 'C'">C</div>
+      <div v-else>Not A/B/C</div>
 
-            <!-- 用 key 管理可复用的元素 -->
-            <template v-if="loginType === 'username'">
-                <label>Username</label>
-                <input placeholder="Enter your username">
-            </template>
-            <template v-else>
-                <label>Email</label>
-                <input placeholder="Enter your email address">
-            </template>
+      <!-- 用 key 管理可复用的元素 -->
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" />
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" />
+      </template>
 
-            <template v-if="loginType === 'username'">
-                <label>Username</label>
-                <input placeholder="Enter your username" key="username-input">
-            </template>
-            <template v-else>
-                <label>Email</label>
-                <input placeholder="Enter your email address" key="email-input">
-            </template>
-        </div>
-    </body>
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input" />
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input" />
+      </template>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script type="text/javascript">
-        var watchExampleVM = new Vue({
-            el: '#app',
-            data: {
-                awesome: true,
-                ok: false,
-                type: 'asfd',
-                loginType: 'username'
-            }
-        })
-</script>
+      <!-- 不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。v-show 只是简单地切换元素的 CSS property display -->
+      <!-- 注意，v-show 不支持 <template> 元素，也不支持 v-else。 -->
+      <!-- v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。 -->
+      <!-- v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。 -->
+      <!-- 相比之下，v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。 -->
+      <!-- 一般来说，v-if 有更高的 切换开销，而 v-show 有更高的 初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。 -->
+      <h1 v-show="ok">Hello!</h1>
+
+      <!-- 不推荐同时使用 v-if 和 v-for。请查阅风格指南以获取更多信息。 -->
+      <!-- 当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。 -->
+      <!-- 列表渲染指南 https://cn.vuejs.org/v2/guide/list.html#v-for-object -->
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script type="text/javascript">
+    var watchExampleVM = new Vue({
+      el: '#app',
+      data: {
+        awesome: true,
+        ok: true,
+        type: 'asfd',
+        loginType: 'username',
+      },
+    })
+  </script>
 </html>
