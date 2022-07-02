@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>vue.js learn</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 注意当点击按钮时，每个组件都会各自独立维护它的 count。因为你每用一次组件，就会有一个它的新实例被创建。 -->
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+      <button-counter></button-counter>
+
+      <!-- Prop 是你可以在组件上注册的一些自定义 attribute -->
+      <blog-post title="My journey with Vue"></blog-post>
+      <blog-post title="Blogging with Vue"></blog-post>
+      <blog-post title="Why Vue is so fun"></blog-post>
+
+      <blog-post
+        v-for="post in posts"
+        :key="post.id"
+        :title="post.title"
+      ></blog-post>
+
+      <blog-post2
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+      ></blog-post2>
+
+      <txt-demo txt="hello world"></txt-demo>
+    </div>
+
+    <div id="blog-posts-events-demo">
+      <!-- 有了这个 v-on:enlarge-text="postFontSize += 0.1" 监听器，父级组件就会接收该事件并更新 postFontSize 的值 -->
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post3
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postFontSize += 0.1"
+        ></blog-post3>
+      </div>
+
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post3
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="onEnlargeText"
+        ></blog-post3>
+      </div>
+
+      <div :style="{ fontSize: postFontSize + 'em' }">
+        <blog-post4
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postFontSize += $event"
+        ></blog-post4>
+      </div>
+
+      <p>两种方式等价：</p>
+      <custom-input
+        v-bind:value="searchText"
+        v-on:input="searchText = $event"
+      ></custom-input>
+      <br />
+      <custom-input v-model="searchText"></custom-input>
+
+      <alert-box> Something bad happened. </alert-box>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script type="text/javascript">
+    // 定义一个名为 button-counter 的新组件, 全局注册方式
+    Vue.component('button-counter', {
+      // 一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝
+      data: function () {
+        return {
+          count: 0,
+        }
+      },
+      template:
+        '<button v-on:click="count++">You clicked me {{ count }} times.</button>',
+    })
+
+    Vue.component('blog-post', {
+      props: ['title'],
+      template: '<h3>{{ title }}</h3>',
+    })
+
+    Vue.component('blog-post2', {
+      props: ['post'],
+      // 模板字符串
+      template: `
+        <div class="blog-post">
+          <h3>{{ post.title }}</h3>
+          <div v-html="post.content"></div>
+        </div>
+      `,
+    })
+
+    Vue.component('blog-post3', {
+      props: ['post'],
+      // 子组件可以通过调用内建的 $emit 方法并传入事件名称来触发一个事件, https://cn.vuejs.org/v2/api/#vm-emit
+      template: `
+        <div class="blog-post">
+          <h3>{{ post.title }}</h3>
+          <button v-on:click="$emit('enlarge-text')">
+            Enlarge text
+          </button>
+          <div v-html="post.content"></div>
+        </div>
+      `,
+    })
+
+    Vue.component('blog-post4', {
+      props: ['post'],
+      // 我们可能想让 <blog-post> 组件决定它的文本要放大多少。这时可以使用 $emit 的第二个参数来提供这个值
+      template: `
+        <div class="blog-post">
+          <h3>{{ post.title }}</h3>
+          <button v-on:click="$emit('enlarge-text', 0.1)">
+            Enlarge text
+          </button>
+          <div v-html="post.content"></div>
+        </div>
+      `,
+    })
+
+    Vue.component('txt-demo', {
+      props: ['txt'],
+      template: '<p>{{ txt }}</p>',
+    })
+
+    Vue.component('custom-input', {
+      props: ['value'],
+      template: `
+        <input
+          v-bind:value="value"
+          v-on:input="$emit('input', $event.target.value)"
+        >
+      `,
+    })
+
+    Vue.component('alert-box', {
+      template: `
+        <div class="demo-alert-box">
+          <strong>Error!</strong>
+          <slot></slot>
+        </div>
+      `,
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        countStartValue: 0,
+        posts: [
+          { id: 1, title: 'My journey with Vue' },
+          { id: 2, title: 'Blogging with Vue' },
+          { id: 3, title: 'Why Vue is so fun' },
+        ],
+      },
+    })
+
+    var vm2 = new Vue({
+      el: '#blog-posts-events-demo',
+      data: {
+        posts: [
+          { id: 1, title: 'My journey with Vue' },
+          { id: 2, title: 'Blogging with Vue' },
+          { id: 3, title: 'Why Vue is so fun' },
+        ],
+        postFontSize: 1,
+        searchText: '',
+      },
+      methods: {
+        onEnlargeText: function (enlargeAmount) {
+          this.postFontSize += enlargeAmount
+        },
+      },
+    })
+  </script>
+</html>

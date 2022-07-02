@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>vue.js learn</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script type="text/javascript">
+    var ComponentA = {}
+
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        countStartValue: 0,
+        posts: [
+          { id: 1, title: 'My journey with Vue' },
+          { id: 2, title: 'Blogging with Vue' },
+          { id: 3, title: 'Why Vue is so fun' },
+        ],
+      },
+    })
+  </script>
+</html>
