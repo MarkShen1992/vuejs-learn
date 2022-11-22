@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <!-- 数据双向绑定 -->
+    <input v-model="message" />
+    <input :value="message" @input="handleChange" />
+
     {{ message }} {{ message + message }}
     <div :id="message"></div>
     <!-- 插槽分类：默认插槽，具名插槽和作用域插槽。作用域插槽：返回组件的函数。根据子组件传递不同的值，返回不同的内容 -->
@@ -54,6 +58,10 @@ export default {
   methods: {
     handleDelete(val) {
       console.log('handleDelete', val)
+    },
+    // 双向绑定实现
+    handleChange(e) {
+      this.message = e.target.value
     },
   },
 }
