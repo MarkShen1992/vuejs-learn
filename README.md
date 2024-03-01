@@ -27,5 +27,6 @@
   - [30 分钟学会 Vue 之脚手架与组件化开发](https://www.bilibili.com/video/BV13m4y1Y7MD/?spm_id_from=333.788&vd_source=901e0b3c23d3cff6094d75383834207f)
   - [30 分钟学会 Vue 之 VueRouter&Vuex](https://www.bilibili.com/video/BV1zF411R7cR/?spm_id_from=333.788&vd_source=901e0b3c23d3cff6094d75383834207f)
   - [20 分钟学会 Vue 综合案例](https://www.bilibili.com/video/BV1714y167Sn/?spm_id_from=333.788&vd_source=901e0b3c23d3cff6094d75383834207f)
+- vue 3.0 学习视频
   - [Vue3 核心语法](https://www.bilibili.com/video/BV1Pg4y1A7pn/?spm_id_from=333.788&vd_source=901e0b3c23d3cff6094d75383834207f)
   - [Pinia](https://www.bilibili.com/video/BV1s94y1q79q/?spm_id_from=333.788&vd_source=901e0b3c23d3cff6094d75383834207f)
