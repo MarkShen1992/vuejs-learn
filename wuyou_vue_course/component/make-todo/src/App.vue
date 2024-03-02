@@ -6,15 +6,18 @@ export default {
         {
           id: 1,
           title: '测试内容1',
-          completed: false
+          completed: false,
+          editing: false
         },
         {
           id: 2,
           title: '测试内容2',
-          completed: true
+          completed: true,
+          editing: false
         }
       ],
-      visible: 'all'
+      visible: 'all',
+      editedVal: ''
     }
   },
   methods: {
@@ -38,13 +41,27 @@ export default {
       this.todos.push({
         id: Date.now(),
         title,
-        completed: false
+        completed: false,
+        editing: false
       })
       // 添加完后将输入框的值设置为空
       e.target.value = ''
     },
-    editTodo (e) {
-      console.log(e)
+    startEdit (todo) {
+      todo.editing = true
+      // 回写值
+      const editTodo = this.$refs['editInput' + todo.id][0]
+      editTodo.value = todo.title
+      // 设置focus状态
+      editTodo.focus()
+    },
+    cancelEdit (todo) {
+      todo.editing = false
+    },
+    editTodo (todo) {
+      const editTodo = this.$refs['editInput' + todo.id][0]
+      todo.title = editTodo?.title
+      todo.editing = false
     },
     removeTodo (todo) {
       this.todos.splice(this.todos.indexOf(todo), 1)
@@ -82,8 +99,8 @@ export default {
 <template>
   <section class="todoapp">
     <header class="header">
-      <h1>todos</h1>
-      <input @keyup.enter='addTodo' class="new-todo" placeholder="What needs to be done?" autofocus>
+      <h1>代办事项</h1>
+      <input @keyup.enter='addTodo' class="new-todo" placeholder="请输入你要做的事情" autofocus>
     </header>
     <section class="main">
       <input id="toggle-all" class="toggle-all" type="checkbox" @click="toggleAll">
@@ -92,30 +109,32 @@ export default {
         <li 
           v-for="todo in filteredTodos"
           :key="todo.id"
-          :class="{ completed: todo.completed }">
+          :class="{ completed: todo.completed, editing: todo.editing }"
+          >
           <div class="view">
             <input class="toggle" type="checkbox" v-model="todo.completed">
-            <label v-text="todo.title"></label>
-            <button @click="removeTodo(todo)" class="destroy"></button>
+            <label v-text="todo.title" @dblclick="startEdit(todo)"></label>
+            <button @click.prevent="removeTodo(todo)" class="destroy"></button>
           </div>
-          <input @dblclick="editTodo" class="edit" value="Create a TodoMVC template">
+          <input class="edit" :ref="'editInput' + todo.id" v-model="editedVal" type="text"
+            @keyup.enter="editTodo" @blur="cancelEdit(todo)">
         </li>
       </ul>
     </section>
     <footer v-show="total > 0" class="footer">
-      <span class="todo-count"><strong>{{ remaining }}</strong> {{ remaining === 1 ? 'item' : 'items' }} left</span>
+      <span class="todo-count">剩余<strong>{{ remaining }}</strong>个任务</span>
       <ul class="filters">
         <li>
-          <a :class="{ selected: visible === 'all' }" href="#/all">All</a>
+          <a :class="{ selected: visible === 'all' }" href="#/all">所有任务</a>
         </li>
         <li>
-          <a :class="{ selected: visible === 'active' }" href="#/active">Active</a>
+          <a :class="{ selected: visible === 'active' }" href="#/active">剩余任务</a>
         </li>
         <li>
-          <a :class="{ selected: visible === 'completed' }" href="#/completed">Completed</a>
+          <a :class="{ selected: visible === 'completed' }" href="#/completed">已完成任务</a>
         </li>
       </ul>
-      <button @click="clearCompleted" class="clear-completed">Clear completed</button>
+      <button @click="clearCompleted" class="clear-completed">清除已完成任务</button>
     </footer>
   </section>
 </template>
