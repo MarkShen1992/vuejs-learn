@@ -48,3 +48,16 @@ npm i serve -g
 serve dist
 ```
 
+
+
+### vue前端案例
+
+- https://todomvc.com/
+- https://github.com/tastejs/todomvc
+
+###   创建项目
+
+```sh
+npm create vue@2
+```
+
