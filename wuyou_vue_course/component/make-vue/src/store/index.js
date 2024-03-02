@@ -18,7 +18,7 @@ export default new Vuex.Store({
       return state.loginStatus.length
     }
   },
-  // 希望在全局中修改数据（同步）
+  // 希望在全局中修改数据（同步）, 操作state
   mutations: {
     changeCount (state, num) {
       state.count += num
