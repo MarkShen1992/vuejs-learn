@@ -34,6 +34,9 @@ export default {
   components: {
     HelloWorld,
   },
+  created () {
+    console.log('App...')
+  },
   methods: {
     handler(childCount) {
       this.childData = childCount

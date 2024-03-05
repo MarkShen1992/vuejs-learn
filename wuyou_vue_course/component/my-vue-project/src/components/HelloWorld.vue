@@ -19,13 +19,16 @@ export default {
     count: {
       type: [String, Number],
       default: 100,
-      required: true,
+      required: false,
     },
   },
   data() {
     return {
       childCount: 0,
     }
+  },
+  created () {
+    console.log('Hello Wolrd')
   },
   methods: {
     handler() {
