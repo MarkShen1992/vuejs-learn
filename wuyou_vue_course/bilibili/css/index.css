@@ -1,0 +1,23 @@
+/* index页面独有的样式 */
+.bili-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.left-entry {
+  display: flex;
+}
+
+.left-entry .entry-title {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  color: #fff;
+  margin-right: 15px;
+}
+
+.left-entry .entry-title svg {
+  margin-right: 6px;
+}
