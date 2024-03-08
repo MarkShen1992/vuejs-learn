@@ -16,6 +16,12 @@ a {
 }
 
 body {
-  background-color: blue;
+  background-color: lightskyblue;
   font-size: 14px;
+}
+
+input {
+  border: 0 none;
+  /* focus后的样式 */
+  outline-style: none;
 }
