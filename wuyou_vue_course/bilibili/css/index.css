@@ -289,3 +289,97 @@
 .channel-items__right span {
   color: #61666d;
 }
+
+/* 推荐列表 */
+.main {
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+.main .recommended-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: 100%
+}
+
+.main .recommended-card .card-image {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.main .card-image img {
+  width: 100%;
+  height: 100%;
+  /* vertical-align: middle; */
+}
+
+.card-image .image-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px 8px 6px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 38px;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0,0,0,.8) 100%);
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.card-image .image-mask .stats-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.image-mask .stats-left .stats-item {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.image-mask svg {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  margin-right: 2px;
+}
+
+/* 底部信息 */
+.card-info h3 {
+  line-height: 22px;
+  padding-right: 16px;
+  font-size: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-break: anywhere;
+  -webkit-line-clamp: 2;
+}
+
+.info-bottom {
+  margin-top: 4px;
+  display: flex;
+  font-size: 13px;
+}
+
+.info-bottom a {
+  color: #9499a0;
+  display: flex;
+  align-items: center; 
+}
+
+.info-bottom svg {
+  width: 17px;
+  height: 17px;
+  margin-right: 2px;
+}
+
+.info-bottom .info-date {
+  margin-left: 4px;
+}
