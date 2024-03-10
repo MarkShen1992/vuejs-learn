@@ -468,3 +468,50 @@
   height: 12px;
   color: #fff;
 }
+
+/* 侧边栏 */
+.sidebar {
+  position: fixed;
+  bottom: 40px;
+  right: 12px;
+}
+
+.sidebar .primary-btn {
+  width: 40px;
+  margin-top: 6px;
+  padding: 8px 0 6px;
+  box-sizing: border-box;
+  border: 1px solid #e3e5e7;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.sidebar .primary-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.primary-btn .primary-btn-text {
+  margin-top: 2px;
+}
+
+.primary-btn.meta {
+  padding: 4px;
+}
+
+.primary-btn.top-btn {
+  margin-top: 12px;
+}
+
+.primary-btn.top-btn svg {
+  width: 15px;
+  height: 8px;
+}
+
