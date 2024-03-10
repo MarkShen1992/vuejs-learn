@@ -184,3 +184,53 @@
   height: 100%;
   background: linear-gradient(rgba(0,0,0,0.4), transparent);
 }
+
+/* 频道区域 */
+.bili-channel {
+  height: 110px;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+}
+
+.bili-channel .channel-icons {
+  display: flex;
+}
+
+.bili-channel .channel-icons a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 24px;
+}
+
+.bili-channel .icon-bg {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.bili-channel .icon-bg__dynamic {
+  background-color: #ff9212;
+}
+
+.bili-channel .icon-bg__popular {
+  background-color: #f07775;
+}
+
+.bili-channel .icon-bg__channel {
+  background-color: #59ca73;
+}
+
+.bili-channel .icon-bg svg {
+  width: 25px;
+  height: 25px;
+}
+
+.bili-channel span {
+  text-align: center;
+}
