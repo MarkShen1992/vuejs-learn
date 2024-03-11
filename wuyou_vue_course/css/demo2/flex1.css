@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.flex-container {
+  width: 100%;
+  max-width: 800px;
+  min-width: 500px;
+  height: 800px;
+  margin: 0 auto;
+  background-color: lightblue;
+
+  /* 九宫格布局 */
+  display: flex;
+  /* 竖直方向居中 */
+  align-items: center;
+  /* 水平方向居中 */
+  justify-content: center;
+}
+
+.flex-item {
+  padding: 10px;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-height: 500px;
+  max-width: 200px;
+}

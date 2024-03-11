@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  display: grid;
+  /* (x, y, z) 每列元素宽度 */
+  /* grid-template-columns: 200px 300px 200px; */
+  /* grid-template-columns: 20% 50% 30%; */
+  /* 1:1:1 */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-template-columns: repeat(auto-fill, 150px); */
+  grid-template-columns: 300px auto 200px;
+  height: 600px;
+  grid-template-rows: 1fr 2fr;
+}
+
+.grid-item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
