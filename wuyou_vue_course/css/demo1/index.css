@@ -12,7 +12,7 @@
   border-radius: 8px;
 
   /* 通常padding（div与内部元素的边距）margin(div与外部元素的边距), width, box-sizing 一起出现 */
-  padding: 15px 20px;
+  padding: 25px 40px;
   /* width: 100%; */
   box-sizing: border-box;
   /* margin: 30px;
@@ -27,6 +27,11 @@
   background-image: url(./img/bg.webp);
   /* (x, y, 多大范围，颜色) */
   box-shadow: 5px 5px 0px grey;
+  /* 
+    相对定位要参照的元素，比如下面 .box span 选择器对应的 position: absolute; 
+    指定元素要参照这个元素进行定位，top, left所指定的位置不再是距离坐标(0,0)，而实际上参照的是 .box 
+   */
+  position: relative;
 }
 
 /* 3. 文本处理 */
@@ -61,4 +66,11 @@
   writing-mode: vertical-rl;
   /* 外文网站上使用较多 */
   text-orientation: upright;
+
+  /* 4. 位置 浮动（通过布局的方式来做），定位 */
+  /* position: absolute; */
+  top: 25px;
+  left: 5px;
+  /* 根据当前的课使区域来定的，侧边栏的效果 */
+  position: fixed;
 }
