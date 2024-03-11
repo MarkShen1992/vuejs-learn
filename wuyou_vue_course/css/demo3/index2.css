@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 200px;
+  margin: 0 auto;
+  /* 以3d的方式展示 */
+  transform-style: preserve-3d;
+  /* 视口与舞台之间的距离 */
+  perspective: 500px;
+  position: relative;
+  transition: all 1s;
+}
+
+.container:hover {
+  transform: rotate3d(0, 1, 0, 180deg);
+}
+
+.transform-box {
+  width: 200px;
+  height: 200px;
+  background-color: tomato;
+  transition: all 1s;
+  position: absolute;
+  /* left: 100px; */
+  /* top: 100px; */
+  /* 以右下角为原点 */
+  /* transform-origin: right bottom; */
+  animation: changeColor 3s infinite;
+}
+
+.transform-box:hover {
+  /* transform: translate(100px, 20px); */
+  /* transform: translateX(100px) translateY(20px); */
+
+  /* transform: rotate(30deg); */
+  /* transform-origin: right bottom; */
+
+  /* transform: scale(.5, 2); */
+  /* transform: skew(-30deg, 20deg); */
+
+  /* transform: translate3d(0, 0, 100px); */
+  transform: rotate3d(1, 0, 0, 100deg);
+}
+
+.test-box {
+  width: 200px;
+  height: 200px;
+  background-color: yellowgreen;
+  position: absolute;
+  transform: translateZ(-100px);
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: tomato;
+  }
+
+  50% {
+    background-color: turquoise;
+  }
+
+  100% {
+    background-color: tomato;
+  }
+}
