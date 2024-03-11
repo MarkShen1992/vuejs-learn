@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  width: 500px;
+  height: 240px;
+  border: 3px dotted gray;
+  border-radius: 8px;
+
+  /* 通常padding（div与内部元素的边距）margin(div与外部元素的边距), width, box-sizing 一起出现 */
+  padding: 15px 20px;
+  /* width: 100%; */
+  box-sizing: border-box;
+  /* margin: 30px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto; */
+  margin: 30px auto;
+}
