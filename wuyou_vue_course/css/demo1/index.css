@@ -3,7 +3,9 @@
   padding: 0;
 }
 
+
 .box {
+  /* 1. 尺寸 */
   width: 500px;
   height: 240px;
   border: 3px dotted gray;
@@ -18,4 +20,14 @@
   margin-left: auto;
   margin-right: auto; */
   margin: 30px auto;
+
+  /* 2. 背景处理 */
+  /* 背景图、背景颜色不可以同时使用 */
+  /* background-color: skyblue; */
+  background-image: url(./img/bg.webp);
+  /* (x, y, 多大范围，颜色) */
+  box-shadow: 5px 5px 0px grey;
+  color: white;
+
+
 }
