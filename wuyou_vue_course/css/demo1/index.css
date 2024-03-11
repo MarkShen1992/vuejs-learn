@@ -19,7 +19,7 @@
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto; */
-  margin: 30px auto;
+  margin: 130px auto;
 
   /* 2. 背景处理 */
   /* 背景图、背景颜色不可以同时使用 */
@@ -27,7 +27,38 @@
   background-image: url(./img/bg.webp);
   /* (x, y, 多大范围，颜色) */
   box-shadow: 5px 5px 0px grey;
+}
+
+/* 3. 文本处理 */
+.box p {
   color: white;
+  /* 首航缩进2字符，em字号 */
+  text-indent: 2em;
+}
+
+.box h1 {
+  font-size: 50px;
+  /* font-family: '黑体'; */
+  font-weight: normal;
+  text-align: center;
 
 
+  background-color: white;
+
+  /* 在垂直方向也呈现居中 */
+  height: 80px;
+  /* 元素内部的文字在元素内部的位置 */
+  line-height: 80px;
+  /* 文本的阴影 */
+  text-shadow: 2px 2px 1px black;
+  /* 文本装饰, 在内容文本中使用的比较多 */
+  text-decoration: dashed underline azure;
+}
+
+.box span {
+  color: orange;
+  /* 文字展示方式 */
+  writing-mode: vertical-rl;
+  /* 外文网站上使用较多 */
+  text-orientation: upright;
 }
